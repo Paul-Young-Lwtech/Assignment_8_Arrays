@@ -1,0 +1,127 @@
+<html>
+<!-- HTML comment
+        Paul Young
+        Assignment 8: Arrays
+        Program 1: Series of Integers
+
+        This program asks the user to enter arbitrary number of positive and negative integers.
+
+        Each time the user enters an integer the program asks whether the user wants to enter one more.
+        And stores the integers in an array.
+
+        Then it uses a loop to output all the integers stored in array in two groups: first output all
+        negative integers and their sum, then output all positive integers and their sum.
+    -->
+
+<head>
+    <title>Series of Integers</title>
+    <script>
+        // This function takes a given array and calculates the total of the number elements in the array.
+        // The parameter represents the array string.
+        // After calculating the total the function outputs the total.
+        function getTotal(array) {
+            // This will be used to store the sum
+            var sum = 0;
+            // This loop accesses the elements from the string array
+            for (var i = 0; i < array.length; i++) {
+                // This will sum up all the numbers in the given array
+                sum = sum + array[i];
+            }
+            // This returns the sum
+            return sum;
+        }
+
+        // An array is passesd to the paramter of the function.
+        // The function parses out the negative numbers from the array.
+        // Than returns the negative numbers as a new array.
+        function getNegativeNumbers(array) {
+            // New array being used to create an array of just the negative numbers from a given array
+            var negArray = [];
+            // This loop accesses the elements from the given array
+            for (var i = 0; i < array.length; i++) {
+                // The "if" is being used to parse out the negative numbers from the given array
+                if (array[i] < 0) {
+                    // After the negative number elements have been taken out
+                    // this "push" is used to pass only the negative numbers
+                    // back to the new array
+                    negArray.push(array[i]);
+                }
+            }
+            // This returns the negative number array
+            return negArray;
+        }
+
+        // The array is passed to the paramter of the function.
+        // The function parses out the posotive numbers from the given array.
+        // Than returns only the posotive numbers as a new array.
+        function getPosotiveNumbers(array) {
+            // New array to be used to store the posotive numbers
+            var posArray = [];
+            // This loop seperates the elements from the string in the array
+            for (var i = 0; i < array.length; i++) {
+                // This statement parses out the posotive numbers from the given array
+                if (array[i] > 0) {
+                    // After the posotive numbers are seperated this push
+                    // stacks the new elements in the new array
+                    posArray.push(array[i]);
+                }
+            }
+            // This returns the posotive numbers as a new array
+            return posArray;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Program 1: Sereis of Integers</h1>
+    <script>
+        // Creating an empty array to be filled by prompting the user
+        var numbersArray = [];
+        // A Boolean variable for the While Loop to keep going until the User stops the loop
+        var keepGoing = true;
+        /*
+        This loop allows the user to enter posotive and negative numbers to be stored
+        in an array. It'll keep asking for numbers until the users stops the loop.
+        I had originally used a "Do While" loop, than I figured out how the
+        simple_array_analysis example was using the "push" to stack the array
+        */
+        while (keepGoing) {
+            // This prompts the User to enter posotive or negative numbers
+            var numbers = parseInt(prompt("Enter any posotive or negative numbers: "));
+            // Adds more numbers to the end of the Array, stacking up the array
+            // as long as the user keeps entering more numbers
+            numbersArray.push(numbers);
+            // A confirm prompt asking the user if they want to continue entering
+            // numbers into the array
+            keepGoing = confirm("Would you like to continue to enter numbers?");
+        }
+
+        // This variable calls the function and passes the array to the function to get the
+        // negative numbers from the given array.
+        // Than it stores the new array after the function return
+        var negativeNumbers = getNegativeNumbers(numbersArray);
+        // This prints the new array of negative numbers
+        document.write("You entered the following negative integers: " + negativeNumbers.join(", ") + "<br>");
+
+        // This variable calls the function to get the sum of the negative number array
+        // then stores the sum after the function return
+        var totalNegNumbers = getTotal(negativeNumbers);
+        // This prints the sum
+        document.write("The sum of all negative integers is: " + totalNegNumbers + "<br>");
+
+        // This variable calls the function and passes the array to the function to get the
+        // posotive numbers from the given array
+        // Than it stores the new array after the fucntion return
+        var posotiveNumbers = getPosotiveNumbers(numbersArray);
+        // This prints the new array of posotive numbers
+        document.write("You entered the following posotive integers: " + posotiveNumbers.join(", ") + "<br>");
+
+        // This variable calls the function to get the sum of posotive number array
+        // then stores the sum after the function return
+        var totalPosNumbers = getTotal(posotiveNumbers);
+        // This prints the sum
+        document.write("The sum of all posotive integers is: " + totalPosNumbers + "<br>");
+    </script>
+</body>
+
+</html>

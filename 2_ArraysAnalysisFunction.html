@@ -1,0 +1,55 @@
+<html>
+<!-- HTML comment
+        Paul Young
+        Assignment 8: Arrays
+        Program 2: Array Analysis Function
+
+        This program takes an array of numbers, than sends to a function
+        that takes the array of numbers and a number as a parameter.
+
+        The function counts and returns a number of times a given number has been
+        repeated in the array.
+    -->
+
+<head>
+    <title>Array Analysis Function</title>
+    <script>
+        /*
+        This function takes an array and a parameter, and searches for the number(argument)
+        within the array and counts the amount of times the number is repeated.
+        Than it returns the total of how many times the number is repeated.
+        */
+        function countOccurences(numArray, num) {
+            // Variable for storing the total count
+            var total = 0;
+            // Taking the string of the array and seperating it into elements
+            for (var i = 0; i < numArray.length; i++) {
+                // This takes the array and compares the elements to the argument number
+                if (numArray[i] == num) {
+                    // This counts how many times the number has been repeated with in the array
+                    total++;
+                }
+            }
+            // Returns the total of how many times the number has been repeated
+            return total;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Program 2: Array Analysis Function</h1>
+    <script>
+        // A variable storing the array to be passed to the function
+        var numbers = [5, 1, 1, 5, 6, 2, 11, 1, 8, 0, 5, 6, 2, 11, 5];
+        // This variable assigns the argument number to be passed to the function's parameter.
+        // Just change the argument value to total a different number in the array
+        var argument = 5;
+        // This variable calls the function, passing the array and agument number.
+        // Then stores the return value from the function.
+        var occurances = countOccurences(numbers, argument);
+        // Prints the array string and the returned value from the function
+        document.write("The number of occurrences of " + argument + " in [" + numbers.join(", ") + "] is " + occurances);
+    </script>
+</body>
+
+</html>
